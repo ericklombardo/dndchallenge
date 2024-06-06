@@ -2,9 +2,17 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import { DefaultPlayerService } from './hit-points/default-player/default-player.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  const defaultPlayerService = app.get(DefaultPlayerService);
+  const player = await defaultPlayerService.getDefaultPlayer();
+  if (!player) {
+    await defaultPlayerService.createDefaultPlayer();
+  }
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
