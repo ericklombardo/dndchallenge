@@ -3,6 +3,7 @@ import { PlayerClass, PlayerClassSchema } from './player-class.schema';
 import { PlayerStat, PlayerStatSchema } from './player-stat.schema';
 import { PlayerItem, PlayerItemSchema } from './player-item.schema';
 import { PlayerDefense, PlayerDefenseSchema } from './player-defense.schema';
+import { HydratedDocument } from 'mongoose';
 
 @Schema()
 export class Player {
@@ -46,5 +47,7 @@ export class Player {
   })
   defenses: PlayerDefense[];
 }
+
+export type PlayerDocument = HydratedDocument<Player>;
 
 export const PlayerSchema = SchemaFactory.createForClass(Player);
