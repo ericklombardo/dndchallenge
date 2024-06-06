@@ -2,9 +2,13 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HitPointsModule } from './hit-points/hit-points.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [HitPointsModule],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost:27017/dnd-challenge'),
+    HitPointsModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
