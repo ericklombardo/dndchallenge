@@ -10,6 +10,11 @@ export class Player {
   @Prop({
     required: true,
   })
+  _id: string;
+
+  @Prop({
+    required: true,
+  })
   name: string;
 
   @Prop({
@@ -46,6 +51,12 @@ export class Player {
     default: [],
   })
   defenses: PlayerDefense[];
+
+  @Prop({
+    type: [Number],
+    default: [],
+  })
+  temporaryHitPoints: number[];
 }
 
 export type PlayerDocument = HydratedDocument<Player>;
