@@ -1,9 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { DamageType } from '../dtos/deal-damage.dto';
 
 @Schema()
 export class PlayerDefense {
-  @Prop()
-  type: string;
+  @Prop({
+    type: String,
+  })
+  type: DamageType;
 
   @Prop()
   defense: string;

@@ -25,7 +25,7 @@ export class Player {
 
   @Prop({
     required: true,
-    default: 1,
+    default: 0,
   })
   hitPoints: number;
 
@@ -53,10 +53,9 @@ export class Player {
   defenses: PlayerDefense[];
 
   @Prop({
-    type: [Number],
-    default: [],
+    default: 0,
   })
-  temporaryHitPoints: number[];
+  temporaryHitPoints: number;
 }
 
 export type PlayerDocument = HydratedDocument<Player>;
