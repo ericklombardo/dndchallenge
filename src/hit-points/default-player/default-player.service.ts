@@ -20,13 +20,9 @@ export class DefaultPlayerService {
     return this.playerModel.findOne().exec();
   }
 
-  updateHitPoints(id: string, hitPoints: number): Promise<PlayerDocument> {
-    return this.playerModel
-      .findOneAndUpdate(
-        { _id: new Types.ObjectId(id) },
-        { $inc: { hitPoints } },
-        { returnDocument: 'after' },
-      )
+  async updateHitPoints(id: string, hitPoints: number): Promise<void> {
+    await this.playerModel
+      .updateOne({ _id: new Types.ObjectId(id) }, { $inc: { hitPoints } })
       .exec();
   }
 }
