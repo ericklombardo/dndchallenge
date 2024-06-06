@@ -5,21 +5,23 @@ export class PlayerItem {
   @Prop()
   name: string;
 
-  @Prop(raw({
-    affectedObject: {
-      type: String,
-    },
-    affectedValue: {
-      type: String,
-    },
-    value: {
-      type: Number,
-    }
-  }))
+  @Prop(
+    raw({
+      affectedObject: {
+        type: String,
+      },
+      affectedValue: {
+        type: String,
+      },
+      value: {
+        type: Number,
+      },
+    }),
+  )
   modifier: {
-    affectedObject: string,
-    affectedValue: string,
-    value: number
+    affectedObject: string;
+    affectedValue: string;
+    value: number;
   };
 }
 

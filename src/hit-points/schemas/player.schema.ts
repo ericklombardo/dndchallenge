@@ -7,42 +7,42 @@ import { PlayerDefense, PlayerDefenseSchema } from './player-defense.schema';
 @Schema()
 export class Player {
   @Prop({
-    required: true
+    required: true,
   })
   name: string;
 
   @Prop({
     required: true,
-    default: 1
+    default: 1,
   })
   level: number;
 
   @Prop({
     required: true,
-    default: 1
+    default: 1,
   })
   hitPoints: number;
 
   @Prop({
     type: [PlayerClassSchema],
-    default: []
+    default: [],
   })
   classes: PlayerClass[];
 
   @Prop({
-    type: PlayerStatSchema
+    type: PlayerStatSchema,
   })
   stats: PlayerStat;
 
   @Prop({
     type: [PlayerItemSchema],
-    default: []
+    default: [],
   })
   items: PlayerItem[];
 
   @Prop({
     type: [PlayerDefenseSchema],
-    default: []
+    default: [],
   })
   defenses: PlayerDefense[];
 }
