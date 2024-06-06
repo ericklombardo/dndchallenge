@@ -18,6 +18,10 @@ export class DefaultPlayerService {
     return createdPlayer.id;
   }
 
+  async deleteDefaultPlayer(): Promise<void> {
+    await this.playerModel.deleteOne({ _id: PLAYER_ID }).exec();
+  }
+
   getDefaultPlayer(): Promise<PlayerDocument> {
     return this.playerModel.findOne({ _id: PLAYER_ID }).exec();
   }

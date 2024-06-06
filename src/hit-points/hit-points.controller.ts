@@ -2,6 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { HitPointsService } from './hit-points.service';
 import { DealDamageDto } from './dtos/deal-damage.dto';
 import { HealDto } from './dtos/heal.dto';
+import { TemporaryHitPointsDto } from './dtos/temporary-hit-points.dto';
 
 @Controller('hit-points')
 export class HitPointsController {
@@ -19,7 +20,7 @@ export class HitPointsController {
   }
 
   @Post('add-temporary')
-  addTemporaryHitPoints(@Body() payload: HealDto) {
-    return this.hitPointsService.addTemporaryHitPoints(payload.heal);
+  addTemporaryHitPoints(@Body() payload: TemporaryHitPointsDto) {
+    return this.hitPointsService.addTemporaryHitPoints(payload.hitPoints);
   }
 }
