@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Player } from '../schemas/player.schema';
+import { Player, PlayerDocument } from '../schemas/player.schema';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import * as player from '../../briv.json';
 
 @Injectable()
@@ -16,7 +16,17 @@ export class DefaultPlayerService {
     return createdPlayer.id;
   }
 
-  async getDefaultPlayer(): Promise<Player> {
+  getDefaultPlayer(): Promise<PlayerDocument> {
     return this.playerModel.findOne().exec();
+  }
+
+  updateHitPoints(id: string, hitPoints: number): Promise<PlayerDocument> {
+    return this.playerModel
+      .findOneAndUpdate(
+        { _id: new Types.ObjectId(id) },
+        { $inc: { hitPoints } },
+        { returnDocument: 'after' },
+      )
+      .exec();
   }
 }
