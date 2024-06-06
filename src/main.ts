@@ -8,10 +8,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const defaultPlayerService = app.get(DefaultPlayerService);
-  const player = await defaultPlayerService.getDefaultPlayer();
-  if (!player) {
-    await defaultPlayerService.createDefaultPlayer();
-  }
+
+  await defaultPlayerService.deleteDefaultPlayer();
+  await defaultPlayerService.createDefaultPlayer();
 
   app.useGlobalPipes(
     new ValidationPipe({
