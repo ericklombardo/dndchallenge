@@ -10,7 +10,7 @@ This task focuses on creating an API for managing a player character's Hit Point
     - Implement the ability for clients to deal damage of different types (e.g., bludgeoning, fire) to a player character.
     - Ensure that the API calculates damage while considering character resistances and immunities.
 
-    > Suppose a player character is hit by an attack that deals Piercing damage, and the attacker rolls a 14 on the damage's Hit Die (with a Piercing damage type). `[Character Hit Points - damage: 25 - 14 = 11]`
+   > Suppose a player character is hit by an attack that deals Piercing damage, and the attacker rolls a 14 on the damage's Hit Die (with a Piercing damage type). `[Character Hit Points - damage: 25 - 14 = 11]`
 
 2. **Heal**
     - Enable clients to heal a player character, increasing their HP.
@@ -19,7 +19,7 @@ This task focuses on creating an API for managing a player character's Hit Point
     - Implement the functionality to add temporary Hit Points to a player character.
     - Ensure that temporary Hit Points follow the rules: they are not additive, always taking the higher value, and cannot be healed.
 
-    > Imagine a player character named "Eldric" currently has 11 Hit Points (HP) and no temporary Hit Points. He finds a magical item that grants him an additional 10 HP during the next fight. When the attacker rolls a 19, Eldric will lose all 10 temporary Hit Points and 9 from his player HP.
+   > Imagine a player character named "Eldric" currently has 11 Hit Points (HP) and no temporary Hit Points. He finds a magical item that grants him an additional 10 HP during the next fight. When the attacker rolls a 19, Eldric will lose all 10 temporary Hit Points and 9 from his player HP.
 
 #### Implementation Details
 - Build the API using either C# or NodeJS.
