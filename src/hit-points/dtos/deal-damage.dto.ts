@@ -14,12 +14,14 @@ export const DAMAGE_TYPES = [
   'necrotic',
   'psychic',
   'force',
-];
+] as const;
+
+export type DamageType = (typeof DAMAGE_TYPES)[number];
 
 export class DealDamageDto {
   @IsPositive()
   readonly damage: number;
 
   @IsIn(DAMAGE_TYPES)
-  readonly damageType: string;
+  readonly damageType: DamageType;
 }
