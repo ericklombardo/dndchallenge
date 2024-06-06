@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Player, PlayerDocument } from '../schemas/player.schema';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, Types } from 'mongoose';
+import { Model } from 'mongoose';
 import * as player from '../../briv.json';
 
 export const PLAYER_ID = 'briv';
@@ -22,24 +22,39 @@ export class DefaultPlayerService {
     return this.playerModel.findOne({ _id: PLAYER_ID }).exec();
   }
 
-  async updateHitPoints(id: string, hitPoints: number): Promise<void> {
+  async increaseHitPoints(id: string, hitPoints: number): Promise<void> {
     await this.playerModel
-      .updateOne({ _id: new Types.ObjectId(id) }, { $inc: { hitPoints } })
+      .updateOne({ _id: id }, { $inc: { hitPoints } })
       .exec();
   }
 
-  async addTemporaryHitPoints(id: string, hitPoints: number): Promise<void> {
+  async removeHitPoints(id: string): Promise<void> {
+    await this.playerModel
+      .updateOne({ _id: id }, { $set: { hitPoints: 0 } })
+      .exec();
+  }
+
+  async removeTemporaryHitPoints(id: string): Promise<void> {
+    await this.playerModel
+      .updateOne({ _id: id }, { $set: { temporaryHitPoints: 0 } })
+      .exec();
+  }
+
+  async increaseTemporaryHitPoints(
+    id: string,
+    hitPoints: number,
+  ): Promise<void> {
+    await this.playerModel
+      .updateOne({ _id: id }, { $inc: { hitPoints } })
+      .exec();
+  }
+
+  async updateTemporaryHitPoints(id: string, hitPoints: number): Promise<void> {
     await this.playerModel
       .updateOne(
-        { _id: id },
-        { $push: { temporaryHitPoints: { $each: [hitPoints], $sort: -1 } } },
+        { _id: id, temporaryHitPoints: { $lt: hitPoints } },
+        { $set: { temporaryHitPoints: hitPoints } },
       )
-      .exec();
-  }
-
-  async removeFirstTemporaryHitPoint(id: string): Promise<void> {
-    await this.playerModel
-      .updateOne({ _id: id }, { $pop: { temporaryHitPoints: -1 } })
       .exec();
   }
 }
