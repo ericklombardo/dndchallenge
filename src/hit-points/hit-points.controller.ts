@@ -17,4 +17,9 @@ export class HitPointsController {
   heal(@Body() payload: HealDto) {
     return this.hitPointsService.heal(payload.heal);
   }
+
+  @Post('add-temporary')
+  addTemporaryHitPoints(@Body() payload: HealDto) {
+    return this.hitPointsService.addTemporaryHitPoints(payload.heal);
+  }
 }
