@@ -35,7 +35,9 @@ export class DefaultPlayerController {
   }
 
   @Post('remove-first-temporary-hit-point')
-  @ApiOperation({ summary: 'Remove the first temporary hit point from the default player' })
+  @ApiOperation({
+    summary: 'Remove the first temporary hit point from the default player',
+  })
   removeFirstTemporaryHitPoint() {
     return this.defaultPlayerService.removeFirstTemporaryHitPoint(PLAYER_ID);
   }
