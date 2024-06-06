@@ -22,9 +22,20 @@ This task focuses on creating an API for managing a player character's Hit Point
    > Imagine a player character named "Eldric" currently has 11 Hit Points (HP) and no temporary Hit Points. He finds a magical item that grants him an additional 10 HP during the next fight. When the attacker rolls a 19, Eldric will lose all 10 temporary Hit Points and 9 from his player HP.
 
 #### Implementation Details
-- Build the API using either C# or NodeJS.
+- The API is Build using NodeJS with [NestJs Framework](https://docs.nestjs.com/).
 - Ensure that character information, including HP, is initialized during the start of the application. Developers do not need to calculate HP; it is provided in the `briv.json` file.
 - Retrieve character information, including HP, from the `briv.json` file.
+
+#### Installation
+- Install node.js (20.14.0) from [Node.js](https://nodejs.org/en/).
+- Install the Nest CLI globally by running `npm install -g @nestjs/cli`.
+- Run `npm install` to install the required dependencies.
+- Create a `.env` file in the root directory and add the following environment variables:
+    - `DATABASE_URL="mongodb://localhost:27017/dnd-challenge"`
+- Run `npm run start` to start the application.
+- The application will be available at `http://localhost:3000`.
+- The application will be available at `http://localhost:3000/api` for Swagger documentation.
+- The End2End tests can be run using `npm run test:e2e`.
 
 
 #### Data Storage
