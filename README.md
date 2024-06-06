@@ -26,7 +26,7 @@ This task focuses on creating an API for managing a player character's Hit Point
 - Ensure that character information, including HP, is initialized during the start of the application. Developers do not need to calculate HP; it is provided in the `briv.json` file.
 - Retrieve character information, including HP, from the `briv.json` file.
 
-#### Installation
+#### Installation, Setup, and Testing
 - Install node.js (20.14.0) from [Node.js](https://nodejs.org/en/).
 - Install the Nest CLI globally by running `npm install -g @nestjs/cli`.
 - Run `npm install` to install the required dependencies.
@@ -39,7 +39,7 @@ This task focuses on creating an API for managing a player character's Hit Point
 
 
 #### Data Storage
-- You have the flexibility to choose the data storage method for character information.
+- The app is using MongoDb with mongoose package for interactive with it.
 
 ### Instructions to Run Locally
 1. Clone the repository or obtain the project files.
